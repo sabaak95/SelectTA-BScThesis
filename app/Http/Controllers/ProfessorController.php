@@ -9,7 +9,7 @@ class ProfessorController extends Controller
     //
     public function makeRequestForm()
     {
-        return view('pages.request');
+        return view('pages.makeRequest');
     }
 
     public function sendRequest(){

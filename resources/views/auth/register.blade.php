@@ -62,10 +62,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="usertype" class="col-md-4 col-form-label text-md-right">{{ __('نقش') }}</label>
+                            <label for="userType" class="col-md-4 col-form-label text-md-right">{{ __('نقش') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="usertype">
+                                <select class="form-control" name="userType">
                                     <option value="0">استاد</option>
                                     <option value="1">دانشجو</option>
                                 </select>

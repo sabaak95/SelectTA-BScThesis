@@ -18,7 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('usertype');
+            $table->string('userType');
+            $table->float('gpa')->nullable($value = true);
+            $table->boolean('isAdmin')->nullable($value = true);
+            $table->string('resumePath')->nullable($value = true);
             $table->rememberToken();
             $table->timestamps();
         });

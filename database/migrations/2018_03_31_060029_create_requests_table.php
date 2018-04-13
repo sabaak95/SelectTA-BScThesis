@@ -15,6 +15,9 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('minGrade');
+          $table->text('preSkills')->nullable();
+           $table->text('preCourses');
             $table->timestamps();
         });
     }

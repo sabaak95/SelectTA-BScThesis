@@ -15,6 +15,9 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('grade');
+            $table->text('skills')->nullable();
+            $table->text('passedPreCourses');
             $table->timestamps();
         });
     }

@@ -20,3 +20,9 @@ Route::get('/makeRequest', 'ProfessorController@makeRequestForm');
 Route::get('/sendRequest','ProfessorController@sendRequest')->name('sendRequest');
 Route::get('/panelShow','ProfessorController@panelShow');
 Route::get('/offersReceived','ProfessorController@offersReceived');
+
+Route::get('/makeOffer', 'StudentController@makeOfferForm');
+Route::get('/sendOffer','StudentController@sendOffer')->name('sendOffer');
+
+
+Route::post('check', 'Controller@check')->name('check');
