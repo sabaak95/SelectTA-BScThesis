@@ -26,11 +26,11 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('نمره دریافتی در درس') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input id="grade" type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : '' }}" name="grade" value="{{ old('grade') }}" required autofocus>
 
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('grade'))
                                         <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('grade') }}</strong>
                                     </span>
                                     @endif
                                 </div>

@@ -10,10 +10,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" >{{ __('اطلاعات پیشنهادات دریافت شده') }}</div>
-//select * from offers where  auth:user->id ;
-                    <div class="card-body" style="direction:rtl">
+                    <div class="card-header" >{{ __('اطلاعات کاربر') }}</div>
 
+                    <div class="card-body" style="direction:rtl">
+                        نام:{{Auth::User()->name}}
+                        <br>
+                        ایمیل:{{Auth::User() ->email}}
+                        <br>
+                        <a href="/requestsReceived"> مشاهده درخواست های موجود</a>
+                        <br>
+                        <a href="/offersSent">مشاهده پیشنهادات ارسال شده</a>
                     </div>
                 </div>
             </div>

@@ -18,10 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('userType');
-            $table->float('gpa')->nullable($value = true);
-            $table->boolean('isAdmin')->nullable($value = true);
-            $table->string('resumePath')->nullable($value = true);
+            $table->integer('user_type')->default(1);
+            $table->float('gpa')->default(0);
+            $table->integer('is_admin')->default(0);
+            $table->string('resume_path')->default('nowhere');
+            $table->integer('is_active')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

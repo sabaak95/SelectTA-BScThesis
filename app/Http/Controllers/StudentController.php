@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
+use App\Req;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -9,6 +11,7 @@ class StudentController extends Controller
     //
     public function makeOfferForm()
     {
+
         return view('pages.makeOffer');
     }
 
@@ -17,9 +20,13 @@ class StudentController extends Controller
     }
 
     public function panelShow(){
-        return view ('pages.panel');
+        return view ('pages.studentPanel');
     }
-    public function offersReceived(){
-        return view ('pages.requestsReceived');
+    public function requestsReceived(){
+        $reqs = Req::with('course')->get();
+        foreach ($reqs as $key => $req)
+            $reqs[$key]['pre_skills'] = json_decode($req['pre_skills']);
+     //   dd($reqs->toArray());
+       return view ('pages.requestsReceived',['reqs'=>$reqs]);
     }
 }

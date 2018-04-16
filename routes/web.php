@@ -15,14 +15,20 @@
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'Auth\LoginController@showLoginForm');
-Route::get('/makeRequest', 'ProfessorController@makeRequestForm');
-Route::get('/sendRequest','ProfessorController@sendRequest')->name('sendRequest');
-Route::get('/panelShow','ProfessorController@panelShow');
-Route::get('/offersReceived','ProfessorController@offersReceived');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/wait', 'ProfessorController@wait');
 
-Route::get('/makeOffer', 'StudentController@makeOfferForm');
-Route::get('/sendOffer','StudentController@sendOffer')->name('sendOffer');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'HomeController@index');
+
+    Route::get('/makeRequest', 'ProfessorController@makeRequestForm');
+    Route::post('/sendRequest','ProfessorController@sendRequest')->name('sendRequest');
+    Route::get('/offersReceived','ProfessorController@offersReceived');
+
+    Route::get('/requestsReceived','StudentController@requestsReceived');
+    Route::get('/makeOffer', 'StudentController@makeOfferForm');
+    Route::post('/sendOffer','StudentController@sendOffer')->name('sendOffer');
+});
 
 
-Route::post('check', 'Controller@check')->name('check');
+

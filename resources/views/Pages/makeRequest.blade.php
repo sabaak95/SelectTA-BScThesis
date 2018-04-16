@@ -16,20 +16,21 @@
                         <form method="POST" action="{{ route('sendRequest') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('نام درس') }}</label>
+                                <label for="course_name" class="col-md-4 col-form-label text-md-right">{{ __('نام درس') }}</label>
 
                                 <div class="col-md-6">
-                                    <select class="js-example-basic-single" name="state">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-single form-control" name="course_name">
+                                        @foreach($courses as $course)
+                                            <option value="{{$course['id']}}">{{$course['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('حداقل نمره درخواستی') }}</label>
+                                <label for="min_grade" class="col-md-4 col-form-label text-md-right">{{ __('حداقل نمره درخواستی') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input id="min_grade" type="text" class="form-control{{ $errors->has('min_grade') ? ' is-invalid' : '' }}" name="min_grade" value="{{ old('min_grade') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback">
@@ -39,40 +40,26 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="skill1" class="col-md-4 col-form-label text-md-right">{{ __(' اسکیل 1') }}</label>
+                            <div class="form-group row  skill-row">
+                                <label for="pre_skill" class="col-md-4 col-form-label text-md-right">{{ __('مهارت') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="skill1" type="text" class="form-control{{ $errors->has('skill1') ? ' is-invalid' : '' }}" name="skill1" value="{{ old('skill1') }}" required autofocus>
+                                    <input id="pre_skill" class="form-control" name="skill[]" required autofocus>
 
-                                    @if ($errors->has('skill1'))
-                                        <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('skill1') }}</strong>
-                                    </span>
-                                    @endif
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="addSkill" class="btn btn-primary add-skill" type="button">افزودن مهارت</button>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="skill2" class="col-md-4 col-form-label text-md-right">{{ __('اسکیل 2') }}</label>
+                                <label for="p_courses" class="col-md-4 col-form-label text-md-right">{{ __('دروس پیشنیاز') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="skill2" type="text" class="form-control{{ $errors->has('skill2') ? ' is-invalid' : '' }}" name="skill2" value="{{ old('skill2') }}" required autofocus>
-
-                                    @if ($errors->has('skill2'))
-                                        <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('skill2') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('دروس پیشنیاز') }}</label>
-
-                                <div class="col-md-6">
-                                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-multiple form-control" name="p_courses[]" multiple="multiple">
+                                        @foreach($courses as $course)
+                                            <option value="{{$course['id']}}">{{$course['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -104,5 +91,17 @@
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
+
+        var input = '<div class="form-group row skill-row">\
+            <label for="skill2" class="col-md-4 col-form-label text-md-right">مهارت</label>\
+                 <div class="col-md-6">\
+                     <input id="skill2" class="form-control" name="skill[]" required autofocus>\
+                 </div>\
+             </div>';
+     $('.add-skill').click(function(){
+         index = $('.skill-row').length
+         $($('.skill-row')[index-1]).after($(input));
+     })
+
     </script>
 @endpush

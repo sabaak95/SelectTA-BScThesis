@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration
             $table->increments('id');
             $table->float('grade');
             $table->text('skills')->nullable();
-            $table->text('passedPreCourses');
+            $table->text('passed_pre');
             $table->timestamps();
         });
     }

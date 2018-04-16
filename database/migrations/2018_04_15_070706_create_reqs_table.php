@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestsTable extends Migration
+class CreateReqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,23 @@ class CreateRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('reqs', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('minGrade');
-          $table->text('preSkills')->nullable();
-           $table->text('preCourses');
+            $table->string('min_grade');
+            $table->text('pre_skills')->nullable();
+            $table->text('pre_courses');
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
         });
     }
 
-    /**
+    /*
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('reqs');
     }
 }

@@ -11,8 +11,8 @@ class Offer extends Model
     {
         return $this->belongsTo('App\User');
     }
-    public function request(){
-        return $this->belongsTo('App\Request');
+    public function req(){
+        return $this->belongsTo('App\Req');
     }
 
 
