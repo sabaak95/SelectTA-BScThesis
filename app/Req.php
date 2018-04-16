@@ -26,14 +26,15 @@ class Req extends Model
 
     protected $fillable = ['min_grade', 'pre_skills', 'pre_courses', 'course_id'];
 
-    public function courses()
-    {
-        return $this->hasMany('App\Course');
-    }
 
     public function getPreAttribute()
     {
         $courses = Course::whereIn('id',json_decode($this['pre_courses']))->get();
         return $courses->toArray();
     }
+    public function courses()
+    {
+        return $this->hasMany('App\Course');
+    }
+
 }

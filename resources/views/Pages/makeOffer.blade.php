@@ -38,12 +38,24 @@
 
 
                             <div class="form-group row">
-                                <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('دروس پیشنیاز') }}</label>
+                                <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('دروس پیش نیازی که پاس نموده اید را از لیست انتخاب کنید') }}</label>
 
                                 <div class="col-md-6">
-                                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-multiple" name="passed_pre[]" multiple="multiple">
+                                        @foreach($pre as $course)
+                                            <option value="{{$course['id']}}">{{$course['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('از بین مهارت های مورد نیاز، مهارت هایی که دارید را انتخاب کنید') }}</label>
+
+                                <div class="col-md-6">
+                                    <select class="js-example-basic-multiple" name="passed_skill[]" multiple="multiple">
+                                        @foreach($req['pre_skills'] as $skill)
+                                            <option value="{{$skill}}"}}>{{$skill}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

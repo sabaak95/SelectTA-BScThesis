@@ -14,6 +14,8 @@ class Offer extends Model
     public function req(){
         return $this->belongsTo('App\Req');
     }
+    protected $fillable = ['grade', 'skills', 'passed_pre'];
+
 
 
     protected $casts = [
