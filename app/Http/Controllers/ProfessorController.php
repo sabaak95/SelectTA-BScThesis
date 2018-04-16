@@ -29,7 +29,8 @@ class ProfessorController extends Controller
             'pre_courses' => $courses,
             'course_id' => $id,
         ];
-        $request = Req::create($data);
+        Req::create($data);
+        return redirect('/');
         //age error dasht bege che moshkeli dare
         //age nadasht am ke ye msg neshun bede ke sakhte shod request o folan
     }

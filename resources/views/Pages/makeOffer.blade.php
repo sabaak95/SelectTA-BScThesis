@@ -19,7 +19,7 @@
                                 <label for="pre" class="col-md-4 col-form-label text-md-right">{{ __('نام درس') }}</label>
 
                                 <div class="col-md-6">
-                                    // Un darsi ke select karde ke biad bbine
+                                    {{$req['course']['name']}}
                                 </div>
                             </div>
                             <div class="form-group row">

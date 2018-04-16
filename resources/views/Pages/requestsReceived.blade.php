@@ -12,13 +12,14 @@
             <div class="card">
                 <div class="card-header" >{{ __('اطلاعات درسهای نیازمند تدریسیار ') }}</div>
                 <div class="card-body" style="direction:rtl">
-                    <table  border="1">
+                    <table  border="1" class="table">
                         <tr>
                             <th>شناسه درخواست</th>
                             <th>نام درس</th>
                             <th>حداقل نمره مورد نیاز</th>
                             <th>لیست مهارتهای مورد نظر</th>
                             <th>لیست دروس پیش نیاز</th>
+                            <th>عملیات</th>
                         </tr>
                         @foreach($reqs as $req)
                             <tr>
@@ -35,15 +36,16 @@
                                     {{join(", ",$req['pre_skills'])}}
                                 </td>
                                 <td>
-                                    @foreach($req['pre'] as $re)
-                                    {{$re['name']}}
-                                    @endforeach
+                                    {{join(', ' ,collect($req['pre'])->pluck('name')->toArray())}}
                                 </td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{route('makeOffer',$req['id'])}}">{{'ایجاد درخواست'}}</a>
+                                </td>
+
 
                             </tr>
                         @endforeach
                     </table>
-                    <a href="/makeOffer"> ایجاد پیشنهاد </a>
                 </div>
             </div>
         </div>

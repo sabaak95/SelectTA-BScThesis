@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/offersReceived','ProfessorController@offersReceived');
 
     Route::get('/requestsReceived','StudentController@requestsReceived');
-    Route::get('/makeOffer', 'StudentController@makeOfferForm');
+    Route::get('/makeOffer/{req}', 'StudentController@makeOfferForm')->name('makeOffer');
     Route::post('/sendOffer','StudentController@sendOffer')->name('sendOffer');
 });
 
