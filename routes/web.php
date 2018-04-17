@@ -23,7 +23,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/makeRequest', 'ProfessorController@makeRequestForm');
     Route::post('/sendRequest','ProfessorController@sendRequest')->name('sendRequest');
-    Route::get('/offersReceived','ProfessorController@offersReceived');
+    Route::get('/requestsSent','ProfessorController@requestsSent');
+    Route::get('/offersReceived/{req}','ProfessorController@offersReceived')->name('offersReceived');
 
     Route::get('/requestsReceived','StudentController@requestsReceived');
     Route::get('/makeOffer/{req}', 'StudentController@makeOfferForm')->name('makeOffer');

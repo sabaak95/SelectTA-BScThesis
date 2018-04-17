@@ -24,7 +24,7 @@ class Req extends Model
         return $this->hasMany('App\Offer');
     }
 
-    protected $fillable = ['min_grade', 'pre_skills', 'pre_courses', 'course_id'];
+    protected $fillable = ['min_grade', 'pre_skills', 'pre_courses', 'course_id','user_id'];
 
 
     public function getPreAttribute()

@@ -19,6 +19,7 @@ class CreateReqsTable extends Migration
             $table->text('pre_skills')->nullable();
             $table->text('pre_courses');
             $table->integer('course_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

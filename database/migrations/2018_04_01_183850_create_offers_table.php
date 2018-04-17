@@ -18,6 +18,8 @@ class CreateOffersTable extends Migration
             $table->float('grade');
             $table->text('skills')->nullable();
             $table->text('passed_pre');
+            $table->integer('user_id')->unsigned();
+            $table->integer('req_id')->unsigned()->default(0);
             $table->timestamps();
         });
     }

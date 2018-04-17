@@ -14,20 +14,20 @@
                     <div class="card-body" style="direction:rtl">
                         <table  border="1" class="table">
                             <tr>
-                                <th>شناسه پیشنهاد</th>
-                                <th>نمره</th>
+                                <th>شناسه درخواست</th>
+                                <th>نام درس</th>
                                 <th>مشاهده پیشنهادات دانشجویان</th>
                             </tr>
-                            @foreach($req['offers'] as $re)
+                            @foreach($reqs as $req)
                                 <tr>
                                     <td>
-                                        {{$re['id']}}
+                                        {{$req['id']}}
                                     </td>
                                     <td>
-                                        {{$re['grade']}}
+                                        {{$req['course']['name']}}
                                     </td>
                                     <td>
-                                        {{$re['user']['name']}}
+                                        <a class="btn btn-primary" href="{{route('offersReceived',$req['id'])}}">{{'مشاهده پیشنهادات'}}</a>
                                     </td>
                                 </tr>
                             @endforeach

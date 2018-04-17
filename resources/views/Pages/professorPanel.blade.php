@@ -19,7 +19,7 @@
                         <br>
                         <a href="/makeRequest"> ایجاد درخواست</a>
                         <br>
-                        <a href="/offersRecieved">مشاهده پیشنهادات دانشجویان</a>
+                        <a href="/requestsSent">مشاهده درخواستهای ارسالی</a>
                     </div>
                 </div>
             </div>
